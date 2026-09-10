@@ -223,5 +223,59 @@ class FullDemoSeeder extends Seeder
                 }
             }
         }
+
+        // 6. Blog Categories & Tags & Posts
+        $cat1 = \App\Models\Category::firstOrCreate(['slug' => 'kinh-nghiem-du-lich'], ['name' => 'Kinh Nghiệm Du Lịch']);
+        $cat2 = \App\Models\Category::firstOrCreate(['slug' => 'am-thuc-van-hoa'], ['name' => 'Ẩm Thực & Văn Hóa']);
+        $cat3 = \App\Models\Category::firstOrCreate(['slug' => 'cam-nang-dat-tour'], ['name' => 'Cẩm Nang Đặt Tour']);
+
+        $tag1 = \App\Models\Tag::firstOrCreate(['slug' => 'da-nang'], ['name' => 'Đà Nẵng']);
+        $tag2 = \App\Models\Tag::firstOrCreate(['slug' => 'phu-quoc'], ['name' => 'Phú Quốc']);
+        $tag3 = \App\Models\Tag::firstOrCreate(['slug' => 'ha-long'], ['name' => 'Hạ Long']);
+        $tag4 = \App\Models\Tag::firstOrCreate(['slug' => 'kinh-nghiem'], ['name' => 'Kinh Nghiệm']);
+
+        $postsData = [
+            [
+                'title' => 'Top 10 Địa Điểm Check-in Không Thể Bỏ Qua Khi Đến Đà Nẵng 2026',
+                'slug' => 'top-10-dia-diem-check-in-da-nang',
+                'content' => 'Đà Nẵng được mệnh danh là thành phố đáng sống nhất Việt Nam với vô số danh lam thắng cảnh như Cầu Vàng Bà Nà Hills, Phố cổ Hội An, Bán đảo Sơn Trà và bãi biển Mỹ Khê tuyệt đẹp. Hãy cùng HC Travel khám phá lịch trình du lịch trọn gói tuyệt vời nhất!',
+                'image' => 'img/blog/1.jpg',
+                'category_id' => $cat1->id,
+                'user_id' => $admin->id,
+                'created_at' => Carbon::now()->subDays(5)
+            ],
+            [
+                'title' => 'Bí Quyết Săn Tour Du Lịch Giá Rẻ & An Toàn Mùa Cao Điểm',
+                'slug' => 'bi-quyet-san-tour-du-lich-gia-re',
+                'content' => 'Để có một chuyến du lịch hoàn hảo cùng gia đình mà vẫn tiết kiệm chi phí, việc lựa chọn nhà cung cấp uy tín và áp dụng các mã giảm giá Voucher như WELCOME2026 hay SUMMER500K là vô cùng quan trọng...',
+                'image' => 'img/blog/2.jpg',
+                'category_id' => $cat3->id,
+                'user_id' => $admin->id,
+                'created_at' => Carbon::now()->subDays(10)
+            ],
+            [
+                'title' => 'Khám Phá Thiên Đường Ẩm Thực Biển Đảo Phú Quốc',
+                'slug' => 'kham-pha-am-thuc-phu-quoc',
+                'content' => 'Phú Quốc không chỉ nổi tiếng với bãi biển cát trắng mịn mà còn thu hút du khách bởi những món hải sản tươi ngon như bún quậy, gỏi cá trích, nhum biển nướng mỡ hành...',
+                'image' => 'img/blog/3.jpg',
+                'category_id' => $cat2->id,
+                'user_id' => $admin->id,
+                'created_at' => Carbon::now()->subDays(15)
+            ],
+            [
+                'title' => 'Trải Nghiệm Du Thuyền 5 Sao Vịnh Hạ Long Trọn Vẹn 2N1Đ',
+                'slug' => 'trai-nghiem-du-thuyen-5-sao-ha-long',
+                'content' => 'Thưởng ngoạn vẻ đẹp kỳ quan thiên nhiên thế giới Vịnh Hạ Long trên du thuyền sang trọng 5 sao, chèo thuyền Kayak xuyên qua hang động tự nhiên và ngắm bình minh trên biển...',
+                'image' => 'img/blog/4.jpg',
+                'category_id' => $cat1->id,
+                'user_id' => $admin->id,
+                'created_at' => Carbon::now()->subDays(20)
+            ]
+        ];
+
+        foreach ($postsData as $p) {
+            $postObj = \App\Models\Post::firstOrCreate(['slug' => $p['slug']], $p);
+            $postObj->tags()->syncWithoutDetaching([$tag1->id, $tag4->id]);
+        }
     }
 }
