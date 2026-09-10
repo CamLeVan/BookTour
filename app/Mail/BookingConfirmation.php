@@ -21,6 +21,6 @@ class BookingConfirmation extends Mailable
     public function build()
     {
         return $this->subject('Xác nhận đặt tour thành công - HC Travel')
-                    ->markdown('emails.bookings.confirmation');
+                    ->view('emails.bookings.confirmation');
     }
 } 

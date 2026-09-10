@@ -212,7 +212,7 @@
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Trẻ em:</span>
-                    <span class="detail-value">{{ number_format($booking->children * $booking->tour->price_children) }} VNĐ</span>
+                    <span class="detail-value">{{ number_format($booking->children * ($booking->tour->price * 0.5)) }} VNĐ</span>
                 </div>
                 <div class="total-price">
                     Tổng cộng: {{ number_format($booking->total_price) }} VNĐ
