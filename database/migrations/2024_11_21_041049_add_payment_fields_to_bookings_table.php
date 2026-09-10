@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::table('bookings', function (Blueprint $table) {
             // Chỉ thêm các cột thanh toán mới
-            $table->enum('payment_status', ['unpaid', 'paid', 'refunded'])
+            $table->string('payment_status', 50)
                 ->default('unpaid')
                 ->after('status');
             $table->string('payment_method')->nullable()->after('payment_status');

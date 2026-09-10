@@ -88,7 +88,7 @@ class FullDemoSeeder extends Seeder
                 'max_people' => 20,
                 'image' => '1.jpg',
                 'destination_id' => $dObjs[0]->id,
-                'provider_id' => $admin->id
+                'user_id' => $admin->id
             ],
             [
                 'name' => 'Tour Biển Đảo Phú Quốc - Cáp Treo Hòn Thơm 4N3Đ',
@@ -98,7 +98,7 @@ class FullDemoSeeder extends Seeder
                 'max_people' => 15,
                 'image' => '2.jpg',
                 'destination_id' => $dObjs[1]->id,
-                'provider_id' => $admin->id
+                'user_id' => $admin->id
             ],
             [
                 'name' => 'Du Thuyền 5 Sao Vịnh Hạ Long 2N1Đ',
@@ -108,7 +108,7 @@ class FullDemoSeeder extends Seeder
                 'max_people' => 12,
                 'image' => '3.jpg',
                 'destination_id' => $dObjs[2]->id,
-                'provider_id' => $admin->id
+                'user_id' => $admin->id
             ],
             [
                 'name' => 'Sapa - Fansipan Legend - Bản Cát Cát 3N2Đ',
@@ -118,7 +118,7 @@ class FullDemoSeeder extends Seeder
                 'max_people' => 25,
                 'image' => '4.jpg',
                 'destination_id' => $dObjs[3]->id,
-                'provider_id' => $admin->id
+                'user_id' => $admin->id
             ],
             [
                 'name' => 'Đà Lạt Mộng Mơ - Thung Lũng Tình Yêu 3N2Đ',
@@ -128,7 +128,7 @@ class FullDemoSeeder extends Seeder
                 'max_people' => 20,
                 'image' => '5.jpg',
                 'destination_id' => $dObjs[4]->id,
-                'provider_id' => $admin->id
+                'user_id' => $admin->id
             ]
         ];
 
@@ -201,8 +201,8 @@ class FullDemoSeeder extends Seeder
                     'tour_id' => $t->id,
                     'booking_date' => Carbon::now()->subDays(rand(1, 60)),
                     'number_of_people' => $numAdults + $numChildren,
-                    'num_adults' => $numAdults,
-                    'num_children' => $numChildren,
+                    'adults' => $numAdults,
+                    'children' => $numChildren,
                     'total_price' => $totalPrice,
                     'total_amount' => $totalPrice,
                     'deposit_amount' => $depositAmt,
