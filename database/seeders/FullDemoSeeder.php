@@ -66,11 +66,11 @@ class FullDemoSeeder extends Seeder
 
         // 2. Destinations
         $destinationsData = [
-            ['name' => 'Đà Nẵng - Hội An', 'slug' => 'da-nang-hoi-an', 'description' => 'Thành phố đáng sống và phố cổ rực rỡ đèn lồng.', 'image' => 'img/tours/danang.jpg'],
-            ['name' => 'Phú Quốc', 'slug' => 'phu-quoc', 'description' => 'Thiên đường đảo ngọc biển xanh cát trắng.', 'image' => 'img/tours/phuquoc.jpg'],
-            ['name' => 'Hạ Long', 'slug' => 'ha-long', 'description' => 'Kỳ quan thiên nhiên thế giới với hàng ngàn đảo đá.', 'image' => 'img/tours/halong.jpg'],
-            ['name' => 'Sapa', 'slug' => 'sapa', 'description' => 'Thành phố trong sương với ruộng bậc thang hùng vĩ.', 'image' => 'img/tours/sapa.jpg'],
-            ['name' => 'Đà Lạt', 'slug' => 'da-lat', 'description' => 'Thành phố ngàn hoa thơ mộng khí hậu ôn hòa.', 'image' => 'img/tours/dalat.jpg']
+            ['name' => 'Đà Nẵng - Hội An', 'slug' => 'da-nang-hoi-an', 'description' => 'Thành phố đáng sống và phố cổ rực rỡ đèn lồng.', 'image' => 'danang.jpg'],
+            ['name' => 'Phú Quốc', 'slug' => 'phu-quoc', 'description' => 'Thiên đường đảo ngọc biển xanh cát trắng.', 'image' => 'phuquoc.jpg'],
+            ['name' => 'Hạ Long', 'slug' => 'ha-long', 'description' => 'Kỳ quan thiên nhiên thế giới với hàng ngàn đảo đá.', 'image' => 'halong.jpg'],
+            ['name' => 'Sapa', 'slug' => 'sapa', 'description' => 'Thành phố trong sương với ruộng bậc thang hùng vĩ.', 'image' => 'sapa.jpg'],
+            ['name' => 'Đà Lạt', 'slug' => 'da-lat', 'description' => 'Thành phố ngàn hoa thơ mộng khí hậu ôn hòa.', 'image' => 'dalat.jpg']
         ];
 
         $dObjs = [];
@@ -86,7 +86,7 @@ class FullDemoSeeder extends Seeder
                 'price' => 3500000,
                 'duration' => 3,
                 'max_people' => 20,
-                'image' => 'img/tours/danang1.jpg',
+                'image' => '1.jpg',
                 'destination_id' => $dObjs[0]->id,
                 'provider_id' => $admin->id
             ],
@@ -96,7 +96,7 @@ class FullDemoSeeder extends Seeder
                 'price' => 5200000,
                 'duration' => 4,
                 'max_people' => 15,
-                'image' => 'img/tours/phuquoc1.jpg',
+                'image' => '2.jpg',
                 'destination_id' => $dObjs[1]->id,
                 'provider_id' => $admin->id
             ],
@@ -106,7 +106,7 @@ class FullDemoSeeder extends Seeder
                 'price' => 4800000,
                 'duration' => 2,
                 'max_people' => 12,
-                'image' => 'img/tours/halong1.jpg',
+                'image' => '3.jpg',
                 'destination_id' => $dObjs[2]->id,
                 'provider_id' => $admin->id
             ],
@@ -116,7 +116,7 @@ class FullDemoSeeder extends Seeder
                 'price' => 2900000,
                 'duration' => 3,
                 'max_people' => 25,
-                'image' => 'img/tours/sapa1.jpg',
+                'image' => '4.jpg',
                 'destination_id' => $dObjs[3]->id,
                 'provider_id' => $admin->id
             ],
@@ -126,7 +126,7 @@ class FullDemoSeeder extends Seeder
                 'price' => 2600000,
                 'duration' => 3,
                 'max_people' => 20,
-                'image' => 'img/tours/dalat1.jpg',
+                'image' => '5.jpg',
                 'destination_id' => $dObjs[4]->id,
                 'provider_id' => $admin->id
             ]
