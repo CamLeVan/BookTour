@@ -1,0 +1,17 @@
+.recent-post-item {
+    position: relative;
+    padding-left: 70px;
+    min-height: 60px;
+}
+
+.recent-post-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.recent-post-date::before {
+    content: url('../img/icons/calendar.svg');
+    width: 16px;
+    height: 16px;
+}

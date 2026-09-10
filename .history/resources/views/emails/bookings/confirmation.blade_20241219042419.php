@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        /* Reset CSS */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f6f6f6;
+        }
+
+        /* Container */
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Header */
+        .email-header {
+            background: #aa8453;
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .email-header img {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .email-header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* Content */
+        .email-content {
+            padding: 30px;
+        }
+
+        .greeting {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        /* Booking Details */
+        .booking-details {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .booking-details h2 {
+            color: #aa8453;
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #666;
+            font-weight: 600;
+        }
+
+        .detail-value {
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Price Summary */
+        .price-summary {
+            background: #fff3e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .total-price {
+            font-size: 24px;
+            color: #aa8453;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #aa8453;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* Additional Info */
+        .additional-info {
+            background: #f8f9fa;
+            border-left: 4px solid #aa8453;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        /* Footer */
+        .email-footer {
+            background: #333333;
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .footer-info {
+            font-size: 14px;
+            color: #999999;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                width: 100% !important;
+                margin: 0 !important;
+            }
+
+            .email-content {
+                padding: 15px !important;
+            }
+
+            .detail-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="email-header">
+            <img src="{{ asset('frontend/img/logo-light.pngpng') }}" alt="HC Travel Logo">
+            <h1>Xác Nhận Đặt Tour Thành Công</h1>
+        </div>
+
+        <!-- Content -->
+        <div class="email-content">
+            <p class="greeting">Kính gửi {{ $booking->user->name }},</p>
+            
+            <p>Cảm ơn bạn đã đặt tour tại HC Travel. Chúng tôi xin xác nhận thông tin đặt tour của bạn như sau:</p>
+
+            <!-- Booking Details -->
+            <div class="booking-details">
+                <h2>Chi Tiết Đặt Tour</h2>
+                <div class="detail-item">
+                    <span class="detail-label">Mã đặt tour:</span>
+                    <span class="detail-value">#{{ $booking->id }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Tour:</span>
+                    <span class="detail-value">{{ $booking->tour->name }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Ngày khởi hành:</span>
+                    <span class="detail-value">{{ $booking->booking_date->format('d/m/Y') }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Số người:</span>
+                    <span class="detail-value">{{ $booking->adults }} người lớn, {{ $booking->children }} trẻ em</span>
+                </div>
+            </div>
+
+            <!-- Price Summary -->
+            <div class="price-summary">
+                <div class="detail-item">
+                    <span class="detail-label">Người lớn:</span>
+                    <span class="detail-value">{{ number_format($booking->adults * $booking->tour->price) }} VNĐ</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Trẻ em:</span>
+                    <span class="detail-value">{{ number_format($booking->children * $booking->tour->price_children) }} VNĐ</span>
+                </div>
+                <div class="total-price">
+                    Tổng cộng: {{ number_format($booking->total_price) }} VNĐ
+                </div>
+            </div>
+
+            <!-- Payment Info -->
+            <div class="additional-info">
+                <h3>Thông tin thanh toán</h3>
+                <p><strong>Phương thức:</strong> {{ ucfirst($booking->payment_method) }}</p>
+                <p><strong>Trạng thái:</strong> {{ $booking->payment_status === 'paid' ? 'Đã thanh toán' : 'Chưa thanh toán' }}</p>
+                @if($booking->transaction_id)
+                <p><strong>Mã giao dịch:</strong> {{ $booking->transaction_id }}</p>
+                @endif
+            </div>
+
+            <!-- CTA Button -->
+            <center>
+                <a href="{{ route('frontend.bookings.history') }}" class="cta-button">
+                    Xem Chi Tiết Đặt Tour
+                </a>
+            </center>
+
+            <!-- Notes -->
+            @if($booking->notes)
+            <div class="additional-info">
+                <h3>Ghi chú của bạn</h3>
+                <p>{{ $booking->notes }}</p>
+            </div>
+            @endif
+
+            <p>Nếu bạn có bất kỳ thắc mắc nào, vui lòng liên hệ với chúng tôi qua:</p>
+            <ul>
+                <li>Email: support@hctravel.com</li>
+                <li>Hotline: 1900 xxxx</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="email-footer">
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+            <p>HC Travel - Đồng hành cùng chuyến đi của bạn</p>
+            <div class="footer-info">
+                <p>© 2024 HC Travel. All rights reserved.</p>
+                <p>Địa chỉ: 123 ABC Street, XYZ District, Ho Chi Minh City</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

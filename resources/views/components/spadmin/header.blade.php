@@ -1,0 +1,313 @@
+<div class="topbar-custom">
+    <div class="container-xxl">
+        <div class="d-flex justify-content-between">
+            <ul class="list-unstyled topnav-menu mb-0 d-flex align-items-center">
+                <li>
+                    <button class="button-toggle-menu nav-link ps-0">
+                        <i data-feather="menu" class="noti-icon"></i>
+                    </button>
+                </li>
+                <li class="d-none d-lg-block">
+                    <div class="position-relative topbar-search">
+                        <input type="text" class="form-control bg-light bg-opacity-75 border-light ps-4"
+                            placeholder="Search..." />
+                        <i
+                            class="mdi mdi-magnify fs-16 position-absolute text-muted top-50 translate-middle-y ms-2"></i>
+                    </div>
+                </li>
+            </ul>
+
+
+            <ul class="list-unstyled topnav-menu mb-0 d-flex align-items-center">
+                <li class="d-none d-sm-flex">
+                    <button type="button" class="btn nav-link" data-toggle="fullscreen">
+                        <i data-feather="maximize" class="align-middle fullscreen noti-icon"></i>
+                    </button>
+                </li>
+
+
+                <li class="dropdown notification-list topbar-dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="false" aria-expanded="false">
+                        <i data-feather="bell" class="noti-icon"></i>
+                        <span class="badge bg-danger rounded-circle noti-icon-badge">9</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-lg">
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h5 class="m-0">
+                                <span class="float-end">
+                                    <a href="#" class="text-dark">
+                                        <small>Clear All</small>
+                                    </a> </span>Notification
+                            </h5>
+                        </div>
+
+
+                        <div class="noti-scroll" data-simplebar>
+                            <!-- item-->
+                            <a href="javascript:void(0);"
+                                class="dropdown-item notify-item text-muted link-primary active">
+                                <div class="notify-icon">
+                                    <img src="{{ asset('assets/images/users/user-12.jpg') }}"
+                                        class="img-fluid rounded-circle" alt="" />
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <p class="notify-details">Carl Steadham</p>
+                                    <small class="text-muted">5 min ago</small>
+                                </div>
+                                <p class="mb-0 user-msg">
+                                    <small class="fs-14">Completed
+                                        <span class="text-reset">Improve workflow in Figma</span></small>
+                                </p>
+                            </a>
+
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary">
+                                <div class="notify-icon">
+                                    <img src="{{ asset('assets/images/users/user-2.jpg') }}"
+                                        class="img-fluid rounded-circle" alt="" />
+                                </div>
+                                <div class="notify-content">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <p class="notify-details">Olivia McGuire</p>
+                                        <small class="text-muted">1 min ago</small>
+                                    </div>
+
+
+                                    <div class="d-flex mt-2 align-items-center">
+                                        <div class="notify-sub-icon">
+                                            <i class="mdi mdi-download-box text-dark"></i>
+                                        </div>
+
+
+                                        <div>
+                                            <p class="notify-details mb-0">dark-themes.zip</p>
+                                            <small class="text-muted">2.4 MB</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary">
+                                <div class="notify-icon">
+                                    <img src="{{ asset('assets/images/users/user-3.jpg') }}"
+                                        class="img-fluid rounded-circle" alt="" />
+                                </div>
+                                <div class="notify-content">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <p class="notify-details">Travis Williams</p>
+                                        <small class="text-muted">7 min ago</small>
+                                    </div>
+                                    <p class="noti-mentioned p-2 rounded-2 mb-0 mt-2">
+                                        <span class="text-primary">@Patryk</span> Please make
+                                        sure that you're....
+                                    </p>
+                                </div>
+                            </a>
+
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary">
+                                <div class="notify-icon">
+                                    <img src="{{ asset('assets/images/users/user-8.jpg') }}"
+                                        class="img-fluid rounded-circle" alt="" />
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <p class="notify-details">Violette Lasky</p>
+                                    <small class="text-muted">5 min ago</small>
+                                </div>
+                                <p class="mb-0 user-msg">
+                                    <small class="fs-14">Completed
+                                        <span class="text-reset">Create new components</span></small>
+                                </p>
+                            </a>
+
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary">
+                                <div class="notify-icon">
+                                    <img src="{{ asset('assets/images/users/user-5.jpg') }}"
+                                        class="img-fluid rounded-circle" alt="" />
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <p class="notify-details">Ralph Edwards</p>
+                                    <small class="text-muted">5 min ago</small>
+                                </div>
+                                <p class="mb-0 user-msg">
+                                    <small class="fs-14">Completed
+                                        <span class="text-reset">Improve workflow in React</span></small>
+                                </p>
+                            </a>
+
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary">
+                                <div class="notify-icon">
+                                    <img src="{{ asset('assets/images/users/user-6.jpg') }}"
+                                        class="img-fluid rounded-circle" alt="" />
+                                </div>
+                                <div class="notify-content">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <p class="notify-details">Jocab jones</p>
+                                        <small class="text-muted">7 min ago</small>
+                                    </div>
+                                    <p class="noti-mentioned p-2 rounded-2 mb-0 mt-2">
+                                        <span class="text-reset">@Patryk</span> Please make
+                                        sure that you're....
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+
+
+                        <!-- All-->
+                        <a href="javascript:void(0);"
+                            class="dropdown-item text-center text-primary notify-item notify-all">
+                            View all
+                            <i class="fe-arrow-right"></i>
+                        </a>
+                    </div>
+                </li>
+                <li class="dropdown notification-list topbar-dropdown">
+                    <a class="nav-link dropdown-toggle nav-user me-0" data-bs-toggle="dropdown" href="#"
+                        role="button" aria-expanded="false">
+                        <img src="{{ Auth::user()?->avatar ? asset(Auth::user()->avatar) : asset('assets/images/users/default-avatar.jpg') }}"
+                            alt="{{ Auth::user()?->name ?? 'Admin' }}" class="rounded-circle"
+                            style="width: 32px; height: 32px; object-fit: cover;" />
+                        <span class="pro-user-name ms-1">
+                            {{ Auth::user()?->name ?? 'Admin' }} <i class="mdi mdi-chevron-down"></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end profile-dropdown">
+                        <!-- item-->
+                        <div class="dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">Welcome!</h6>
+                        </div>
+
+                        <!-- item-->
+                        <a class="dropdown-item notify-item" href="#" data-bs-toggle="modal"
+                            data-bs-target="#editProfileModal">
+                            <i class="mdi mdi-account-circle-outline fs-16 align-middle"></i>
+                            <span>My Account</span>
+                        </a>
+
+                        <!-- item-->
+                        <a class="dropdown-item notify-item" href="auth-lock-screen.html">
+                            <i class="mdi mdi-lock-outline fs-16 align-middle"></i>
+                            <span>Lock Screen</span>
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <!-- item-->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a class="dropdown-item notify-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); this.closest('form').submit();">
+                                <i class="mdi mdi-location-exit fs-16 align-middle"></i>
+                                <span>Logout</span>
+                            </a>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit Profile -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('spadmin.profile.update') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="modal-body">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <!-- Avatar -->
+                    <div class="mb-3 text-center">
+                        <img src="{{ Auth::user()?->avatar ? Storage::url(Auth::user()->avatar) : asset('assets/images/users/default-avatar.jpg') }}"
+                            class="rounded-circle avatar-lg img-thumbnail mb-3" alt="profile-image"
+                            id="previewAvatar">
+                        <div>
+                            <input type="file" name="avatar" class="form-control" id="avatarInput"
+                                accept="image/*" onchange="previewImage(this)">
+                        </div>
+                    </div>
+
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name"
+                            value="{{ Auth::user()?->name }}" required>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" name="phone"
+                            value="{{ Auth::user()?->phone }}" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        dropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            const bs_dropdown = new bootstrap.Dropdown(toggle);
+
+            dropdown.addEventListener('mouseenter', function() {
+                bs_dropdown.show();
+            });
+
+            dropdown.addEventListener('mouseleave', function() {
+                bs_dropdown.hide();
+            });
+        });
+    });
+
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('previewAvatar').setAttribute('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

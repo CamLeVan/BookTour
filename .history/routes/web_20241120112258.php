@@ -1,0 +1,83 @@
+<?php
+
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\AboutController;
+use App\Http\Controllers\Frontend\TourController;
+use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\ContactController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Frontend\NewsletterController;
+use App\Http\Controllers\Spadmin\DashboardController;
+use App\Http\Controllers\Frontend\DestinationController;
+use App\Http\Controllers\Frontend\BookingController;
+
+
+// Frontend Routes
+Route::name('frontend.')->group(function () {
+    // Home
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    
+    // About
+    Route::get('/about', [AboutController::class, 'index'])->name('about');
+    
+    // Tours
+    Route::prefix('tours')->name('tours.')->group(function () {
+        Route::get('/', [TourController::class, 'index'])->name('index');
+        Route::get('/{tour}', [TourController::class, 'show'])->name('show');
+        Route::get('/search', [TourController::class, 'search'])->name('search');
+        Route::get('/category/{category}', [TourController::class, 'category'])->name('category');
+    });
+    
+    // Blog
+    Route::prefix('blog')->name('blog.')->group(function () {
+        Route::get('/', [BlogController::class, 'index'])->name('index');
+        Route::get('/{post}', [BlogController::class, 'show'])->name('show');
+        Route::get('/category/{category}', [BlogController::class, 'category'])->name('category');
+    });
+    
+    // Contact
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+    
+    // User Booking (cần auth)
+    Route::middleware(['auth'])->group(function () {
+        Route::post('/tours/{tour}/book', [TourController::class, 'book'])->name('tours.book');
+        Route::get('/my-bookings', [TourController::class, 'myBookings'])->name('tours.my-bookings');
+        Route::get('/booking-history', [BookingController::class, 'history'])->name('booking.history');
+    });
+    
+    // Destinations
+    Route::prefix('destinations')->name('destinations.')->group(function () {
+        Route::get('/', [DestinationController::class, 'index'])->name('index');
+        Route::get('/{destination}', [DestinationController::class, 'show'])->name('show');
+    });
+    
+    Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])
+        ->name('newsletter.subscribe');
+});
+
+// User Dashboard Routes
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        if (Auth::user()->role !== 'user') {
+            return redirect('/');
+        }
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+// Profile Routes
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Auth Routes
+require __DIR__ . '/auth.php';
+
+// Admin Routes
+require __DIR__ . '/spadmin.php';
+require __DIR__ . '/admin.php';

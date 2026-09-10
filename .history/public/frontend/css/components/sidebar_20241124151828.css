@@ -1,0 +1,60 @@
+
+/* Recent Posts Widget */
+.recent li {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.recent li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border: none;
+}
+
+.recent .thum {
+    width: 90px;
+    height: 70px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.recent .thum img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recent a {
+    color: #0f2454;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.recent a:hover {
+    color: #2095AE;
+}
+
+/* Tags Widget */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tags a {
+    padding: 8px 16px;
+    background: #f4f5f8;
+    border-radius: 6px;
+    color: #676977;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.tags a:hover {
+    background: #2095AE;
+    color: #fff;
+} 

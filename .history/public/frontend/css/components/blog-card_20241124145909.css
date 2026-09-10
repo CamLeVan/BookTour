@@ -1,0 +1,33 @@
+.blog-card {
+    position: relative;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Thêm pattern decoration */
+.blog-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background-image: url('../img/patterns/card-pattern.svg');
+    opacity: 0.1;
+}
+
+/* Category badge với icon */
+.category-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(33, 147, 176, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.category-badge img {
+    width: 16px;
+    height: 16px;
+}

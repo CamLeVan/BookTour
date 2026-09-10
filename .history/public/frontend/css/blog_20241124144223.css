@@ -1,0 +1,131 @@
+/* Modern Variables */
+:root {
+  --primary-color: #2d3436;
+  --secondary-color: #0984e3;
+  --accent-color: #00b894;
+  --text-color: #2d3436;
+  --light-gray: #dfe6e9;
+  --white: #ffffff;
+  --transition: all 0.3s ease;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+}
+
+/* Banner Improvements */
+.banner-header {
+  height: 60vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-header h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  animation: fadeInUp 1s ease;
+}
+
+/* Blog Post Cards */
+.item {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.post-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.post-img img {
+  transition: var(--transition);
+}
+
+.post-img:hover img {
+  transform: scale(1.05);
+}
+
+.date {
+  background: var(--secondary-color);
+  border-radius: var(--radius);
+  padding: 10px 15px;
+}
+
+/* Sidebar Improvements */
+.sidebar .widget {
+  background: var(--white);
+  padding: 25px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+}
+
+.widget-title h6 {
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.widget-title h6:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+/* Tags */
+.tags a {
+  display: inline-block;
+  padding: 5px 15px;
+  background: var(--light-gray);
+  border-radius: 20px;
+  margin: 0 5px 10px 0;
+  transition: var(--transition);
+}
+
+.tags a:hover {
+  background: var(--secondary-color);
+  color: var(--white);
+}
+
+/* Pagination */
+.pagination-wrap {
+  margin-top: 40px;
+}
+
+.pagination li a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0 5px;
+  transition: var(--transition);
+}
+
+.pagination li.active span,
+.pagination li:hover a {
+  background: var(--secondary-color);
+  color: var(--white);
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+  .banner-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .sidebar {
+    margin-top: 40px;
+  }
+} 

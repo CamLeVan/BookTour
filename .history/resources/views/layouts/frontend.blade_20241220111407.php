@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>HC Travel</title>
+    
+    <!-- CSS -->
+    <link rel="shortcut icon" href="{{ asset('frontend/img/favicon.png') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="{{ asset('frontend/css/plugins.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    @stack('styles')
+</head>
+<body>
+    @include('components.frontend.preloader')
+    @include('components.frontend.scroll-to-top')
+    @include('components.frontend.navigation')
+    
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+    
+    @yield('content')
+    
+    @include('components.frontend.footer')
+
+    <!-- jQuery -->
+    <script src="{{ asset('frontend/js/jquery-3.6.3.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>  <!-- Quan trọng! -->
+    <script src="{{ asset('frontend/js/jquery-migrate-3.0.0.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/modernizr-2.6.2.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.isotope.v3.0.2.js') }}"></script>
+    <script src="{{ asset('frontend/js/pace.js') }}"></script>
+    <script src="{{ asset('frontend/js/popper.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/scrollIt.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.magnific-popup.js') }}"></script>
+    <script src="{{ asset('frontend/js/YouTubePopUp.js') }}"></script>
+    <script src="{{ asset('frontend/js/select2.js') }}"></script>
+    <script src="{{ asset('frontend/js/datepicker.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/smooth-scroll.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        // Configure Toastr
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    </script>
+
+    @if(!Request::is('admin/*'))
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/67521d362480f5b4f5a85760/1iecc47np';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        <!--End of Tawk.to Script-->
+    @endif
+
+    @auth
+        <script>
+        var Tawk_API = Tawk_API || {};
+        Tawk_API.visitor = {
+            name : '{{ auth()->user()->name }}',
+            email : '{{ auth()->user()->email }}'
+        };
+        </script>
+    @endauth
+
+    <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    </script>
+
+    @stack('scripts')
+</body>
+</html>

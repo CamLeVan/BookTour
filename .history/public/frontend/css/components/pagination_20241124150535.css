@@ -1,0 +1,39 @@
+.pagination-wrap {
+    margin-top: 50px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.pagination li {
+    margin: 0;
+}
+
+.pagination li a,
+.pagination li span {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #fff;
+    color: #676977;
+    font-weight: 500;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.pagination li.active span,
+.pagination li a:hover {
+    background: #2095AE;
+    color: #fff;
+}
+
+.pagination li.disabled a {
+    opacity: 0.5;
+    cursor: not-allowed;
+} 
