@@ -243,45 +243,6 @@
                                                         <button class="btn btn-sm btn-success fw-bold" data-bs-toggle="modal" data-bs-target="#reviewModal{{ $booking->id }}">
                                                             ⭐ Viết Đánh giá Tour
                                                         </button>
-
-                                                        <!-- Review Submission Modal -->
-                                                        <div class="modal fade" id="reviewModal{{ $booking->id }}" tabindex="-1" aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <div class="modal-content">
-                                                                    <form action="{{ route('frontend.bookings.review.store', $booking) }}" method="POST">
-                                                                        @csrf
-                                                                        <div class="modal-header bg-success text-white">
-                                                                            <h5 class="modal-title text-white"><i class="ti-star me-2"></i> Đánh giá chuyến đi #{{ $booking->id }}</h5>
-                                                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div class="modal-body text-start">
-                                                                            <h6 class="fw-bold mb-1">{{ $booking->tour->name }}</h6>
-                                                                            <p class="text-muted small mb-3">Ngày khởi hành: {{ \Carbon\Carbon::parse($booking->booking_date)->format('d/m/Y') }}</p>
-
-                                                                            <div class="mb-3">
-                                                                                <label class="form-label fw-bold">Chọn số sao trải nghiệm:</label>
-                                                                                <select name="rating" class="form-select border-success fw-bold text-warning" required>
-                                                                                    <option value="5" selected>⭐⭐⭐⭐⭐ (5/5 - Rất tuyệt vời!)</option>
-                                                                                    <option value="4">⭐⭐⭐⭐ (4/5 - Hài lòng)</option>
-                                                                                    <option value="3">⭐⭐⭐ (3/5 - Bình thường)</option>
-                                                                                    <option value="2">⭐⭐ (2/5 - Tạm được)</option>
-                                                                                    <option value="1">⭐ (1/5 - Không hài lòng)</option>
-                                                                                </select>
-                                                                            </div>
-
-                                                                            <div class="mb-3">
-                                                                                <label class="form-label fw-bold">Viết cảm nhận / nhận xét của bạn:</label>
-                                                                                <textarea name="comment" class="form-control" rows="4" placeholder="Chia sẻ trải nghiệm thực tế của bạn về hướng dẫn viên, dịch vụ, khách sạn..." required minlength="5"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer bg-light">
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                                                            <button type="submit" class="btn btn-success fw-bold">Gửi Đánh Giá ⭐</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     @endif
                                                 @endif
                                             </div>
@@ -290,6 +251,49 @@
                                 </div>
                             @endforeach
                         </div>
+
+                        <!-- Review Submission Modals (Moved outside .booking-grid to prevent Bootstrap modal overflow/stacking context clipping) -->
+                        @foreach($bookings as $booking)
+                            @if($booking->status === 'completed' && !$booking->review)
+                                <div class="modal fade" id="reviewModal{{ $booking->id }}" tabindex="-1" aria-hidden="true" wire:ignore.self>
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <form action="{{ route('frontend.bookings.review.store', $booking) }}" method="POST">
+                                                @csrf
+                                                <div class="modal-header bg-success text-white">
+                                                    <h5 class="modal-title text-white"><i class="ti-star me-2"></i> Đánh giá chuyến đi #{{ $booking->id }}</h5>
+                                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-start">
+                                                    <h6 class="fw-bold mb-1">{{ $booking->tour->name }}</h6>
+                                                    <p class="text-muted small mb-3">Ngày khởi hành: {{ \Carbon\Carbon::parse($booking->booking_date)->format('d/m/Y') }}</p>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label fw-bold">Chọn số sao trải nghiệm:</label>
+                                                        <select name="rating" class="form-select border-success fw-bold text-warning" required>
+                                                            <option value="5" selected>⭐⭐⭐⭐⭐ (5/5 - Rất tuyệt vời!)</option>
+                                                            <option value="4">⭐⭐⭐⭐ (4/5 - Hài lòng)</option>
+                                                            <option value="3">⭐⭐⭐ (3/5 - Bình thường)</option>
+                                                            <option value="2">⭐⭐ (2/5 - Tạm được)</option>
+                                                            <option value="1">⭐ (1/5 - Không hài lòng)</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label fw-bold">Viết cảm nhận / nhận xét của bạn:</label>
+                                                        <textarea name="comment" class="form-control" rows="4" placeholder="Chia sẻ trải nghiệm thực tế của bạn về hướng dẫn viên, dịch vụ, khách sạn..." required minlength="5"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer bg-light">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                    <button type="submit" class="btn btn-success fw-bold">Gửi Đánh Giá ⭐</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
 
                         <div class="pagination-wrapper">
                             @if($bookings->hasPages())
