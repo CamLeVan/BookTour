@@ -208,10 +208,11 @@ class FullDemoSeeder extends Seeder
                     'deposit_amount' => $depositAmt,
                     'remaining_amount' => $remAmt,
                     'payment_status' => $st,
+                    'status' => ($i === 0 && $u->id === $customer->id) ? 'completed' : 'pending',
                     'created_at' => Carbon::now()->subDays(rand(1, 60))
                 ]);
 
-                if ($st === 'paid' && rand(0, 1) === 1) {
+                if (($st === 'paid' || $b->status === 'completed') && rand(0, 1) === 1 && $i > 0) {
                     Review::create([
                         'user_id' => $u->id,
                         'tour_id' => $t->id,

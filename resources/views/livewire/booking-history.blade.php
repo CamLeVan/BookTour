@@ -13,22 +13,22 @@
                         <h5>Trạng thái</h5>
                         <div class="filter-options">
                             <label class="filter-option">
-                                <input type="checkbox" name="status[]" value="pending">
+                                <input type="checkbox" wire:model.live="statusFilters" value="pending">
                                 <span class="checkmark"></span>
                                 <span class="status-badge pending">Chờ xác nhận</span>
                             </label>
                             <label class="filter-option">
-                                <input type="checkbox" name="status[]" value="confirmed">
+                                <input type="checkbox" wire:model.live="statusFilters" value="confirmed">
                                 <span class="checkmark"></span>
                                 <span class="status-badge confirmed">Đã xác nhận</span>
                             </label>
                             <label class="filter-option">
-                                <input type="checkbox" name="status[]" value="completed">
+                                <input type="checkbox" wire:model.live="statusFilters" value="completed">
                                 <span class="checkmark"></span>
                                 <span class="status-badge completed">Hoàn thành</span>
                             </label>
                             <label class="filter-option">
-                                <input type="checkbox" name="status[]" value="cancelled">
+                                <input type="checkbox" wire:model.live="statusFilters" value="cancelled">
                                 <span class="checkmark"></span>
                                 <span class="status-badge cancelled">Đã hủy</span>
                             </label>
@@ -39,12 +39,12 @@
                         <h5>Thời gian</h5>
                         <div class="filter-options">
                             <label class="filter-option">
-                                <input type="radio" name="time" value="upcoming">
+                                <input type="radio" wire:model.live="timeFilter" value="upcoming">
                                 <span class="checkmark"></span>
                                 Sắp tới
                             </label>
                             <label class="filter-option">
-                                <input type="radio" name="time" value="past">
+                                <input type="radio" wire:model.live="timeFilter" value="past">
                                 <span class="checkmark"></span>
                                 Đã qua
                             </label>
@@ -55,12 +55,12 @@
                         <h5>Thanh toán</h5>
                         <div class="filter-options">
                             <label class="filter-option">
-                                <input type="radio" name="payment" value="paid">
+                                <input type="radio" wire:model.live="paymentFilter" value="paid">
                                 <span class="checkmark"></span>
                                 Đã thanh toán
                             </label>
                             <label class="filter-option">
-                                <input type="radio" name="payment" value="unpaid">
+                                <input type="radio" wire:model.live="paymentFilter" value="unpaid">
                                 <span class="checkmark"></span>
                                 Chưa thanh toán
                             </label>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="header-right">
                             <div class="search-box">
-                                <input type="text" placeholder="Tìm kiếm tour..." wire:model="searchQuery">
+                                <input type="text" placeholder="Tìm kiếm tour..." wire:model.live.debounce.500ms="searchQuery">
                                 <i class="ti-search"></i>
                             </div>                            
                             <div class="view-options">
@@ -126,7 +126,7 @@
                     @else
                         <div class="booking-grid">
                             @foreach($bookings as $booking)
-                                <div class="booking-card">
+                                <div class="booking-card" wire:key="booking-card-{{ $booking->id }}">
                                     <div class="booking-image">
                                         <img src="{{ asset('frontend/img/tours/' . $booking->tour->image) }}" alt="{{ $booking->tour->name }}">
                                         <div class="booking-date">
@@ -213,7 +213,7 @@
                                                     </form>
                                                 @endif
 
-                                                @if(($booking->payment_status === 'paid' || $booking->payment_status === 'deposit_paid') && $booking->status != 'cancelled' && $booking->refund_status === 'none')
+                                                @if(($booking->payment_status === 'paid' || $booking->payment_status === 'deposit_paid') && $booking->status != 'cancelled' && $booking->status != 'completed' && $booking->refund_status === 'none')
                                                     <form action="{{ route('frontend.bookings.request-refund', $booking) }}" method="POST" class="d-inline" onsubmit="var reason = prompt('Nhập lý do bạn muốn hủy tour & hoàn tiền:'); if(!reason) return false; this.querySelector('input[name=refund_reason]').value = reason; return true;">
                                                         @csrf
                                                         <input type="hidden" name="refund_reason" value="">
