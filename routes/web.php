@@ -117,6 +117,29 @@ Route::post('webhooks/payment', [PaymentController::class, 'handleWebhook'])
 if (config('app.env') === 'local') {
     Route::post('/bookings/{pendingBooking}/simulate-payment', [PaymentController::class, 'simulatePayment'])
         ->name('frontend.bookings.simulate-payment');
+
+    // Email Preview Routes for Testing
+    Route::prefix('preview-mail')->group(function () {
+        Route::get('/registration', function () {
+            $user = \App\Models\User::first() ?? \App\Models\User::factory()->make();
+            return new \App\Mail\RegistrationSuccessful($user);
+        });
+
+        Route::get('/booking-confirmation', function () {
+            $booking = \App\Models\Booking::with(['user', 'tour'])->first();
+            return new \App\Mail\BookingConfirmation($booking);
+        });
+
+        Route::get('/booking-cancelled', function () {
+            $booking = \App\Models\Booking::with(['user', 'tour'])->first();
+            return new \App\Mail\BookingCancelled($booking);
+        });
+
+        Route::get('/payment-confirmation', function () {
+            $booking = \App\Models\Booking::with(['user', 'tour'])->first();
+            return new \App\Mail\PaymentConfirmation($booking);
+        });
+    });
 }
 
 // === Email Verification ===
