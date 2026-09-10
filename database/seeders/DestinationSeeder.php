@@ -43,7 +43,7 @@ class DestinationSeeder extends Seeder
         ];
 
         foreach ($destinations as $destination) {
-            Destination::create($destination);
+            Destination::firstOrCreate(['slug' => $destination['slug']], $destination);
         }
     }
 }
